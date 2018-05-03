@@ -140,13 +140,16 @@ function createCancelFulfillment(artifact) {
     artifact.msgs.push(cancelFulfillment);
 }
 
+document.getElementById('pause-control').onclick = document.getElementById('pause-control-checkbox').click;
+
 setInterval(() => {
-    drawBg();
-    for (let i of artifacts) {
-        if (i.alive) {
-            i.draw();
-            i.update();
+    if (!document.getElementById('pause-control-checkbox').checked) {
+        drawBg();
+        for (let i of artifacts) {
+            if (i.alive) {
+                i.draw();
+                i.update();
+            }
         }
     }
-    // console.log('Draw Once');
-}, 20)
+}, 20);
