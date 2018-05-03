@@ -5,23 +5,39 @@ import json
 
 
 class Message:
-    def __init__(self, data_string):
-        self.__origin_data_string = data_string
-        self.__data = json.loads(data_string)
+
+    def __init__(self, data):
+        if type(data) is str:
+            self.__data_string = data
+            self.__data = json.loads(data)
+        elif type(data) is dict:
+            self.__data = data
+            self.__data_string = json.dumps(data)
+
     def __str__(self):
-        return self.__origin_data_string
-    def get_data(self):
+        return self.__data_string
+
+    def get_data_dict(self) -> dict:
         return self.__data
-    def get_origin_data_string(self):
-        return self.__origin_data_string
-    def get_artifact_id(self):
+
+    def get_data_string(self) -> str:
+        return self.__data_string
+
+    def get_artifact_id(self) -> int:
         return self.__data['artifact_id']
-    def get_message_type(self):
+
+    def get_message_type(self) -> str:
         return self.__data['message_type']
-    def get_from_entity_type(self):
+
+    def get_from_entity_type(self) -> str:
         return self.__data['from_entity']['type']
-    def get_from_entity_id(self):
+
+    def get_from_entity_id(self) -> int:
         return self.__data['from_entity']['id']
+
+    def get_to_entity_type(self) -> str:
+        return self.__data['to_entity_type']
+
 
 class MessageGenerator:
     pass
