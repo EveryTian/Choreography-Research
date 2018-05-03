@@ -13,7 +13,12 @@ function writeWhiteBoard(msg) {
     console.log(msg);
 }
 
+function clearPad() {
+    drawingPad.height = screenHeight;
+}
+
 class Text {
+
     constructor(x, y, text, size, font) {
         this.x = x;
         this.y = y;
@@ -21,20 +26,24 @@ class Text {
         this.size = size;
         this.font = font;
     }
+
     draw() {
         drawingContext.fillStyle = '#000000';
         drawingContext.font = '' + this.size + 'px ' + this.font;
         drawingContext.strokeText(this.text, this.x, this.y);
     }
+
 }
 
 class Triangle {
+
     constructor(x, y, l, color) {
         this.x = x;
         this.y = y;
         this.l = l;
         this.color = color;
     }
+
     draw() {
         drawingContext.fillStyle = this.color;
         drawingContext.beginPath();
@@ -46,9 +55,11 @@ class Triangle {
         drawingContext.lineTo(this.x + a, this.y + b);
         drawingContext.fill();
     }
+
 }
 
 class Rect {
+
     constructor(x, y, height, width, color, text) {
         this.x = x;
         this.y = y;
@@ -59,6 +70,7 @@ class Rect {
             this.text = new Text(x + 5, y + height - 5, text, 20, "Arial");
         }
     }
+
     draw() {
         if (this.color !== undefined) {
             drawingContext.fillStyle = this.color;
@@ -68,9 +80,11 @@ class Rect {
             this.text.draw();
         }
     }
+
 }
 
 class Line {
+
     constructor(x0, y0, x1, y1, color) {
         this.x0 = x0;
         this.x1 = x1;
@@ -78,6 +92,7 @@ class Line {
         this.y1 = y1;
         this.color = color;
     }
+
     draw() {
         if (this.color !== undefined) {
             drawingContext.fillStyle = this.color;
@@ -85,28 +100,34 @@ class Line {
         drawingContext.moveTo(this.x0, this.y0);
         drawingContext.lineTo(this.x1, this.y1);
     }
+
 }
 
 class Lines {
+
     constructor(from, to, ...lines) {
         this.lines = lines;
         this.from = from;
         this.to = to;
     }
+
     draw() {
         for (let line of this.lines) {
             line.draw();
         }
     }
+
 }
 
 class Circle {
+
     constructor(x, y, r, color) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.color = color;
     }
+
     draw() {
         drawingContext.beginPath();
         drawingContext.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
@@ -116,22 +137,15 @@ class Circle {
         drawingContext.fill();
         drawingContext.closePath();
     }
-}
-//
-// class Triangle {
-//     constructor(x, )
-// }
 
-function clearPad() {
-    drawingPad.height = screenHeight;
 }
+
 
 class Message {
-    constructor(from, to, artifact, fn) {
 
+    constructor(from, to, artifact, fn) {
         const speedMulMin = 25;
         const speedMulMax = 75;
-
         this.fn = fn;
         this.artifact = artifact;
         this.color = artifact.color;
@@ -164,8 +178,8 @@ class Message {
         this.speedX = Math.abs(this.toX - this.fromX) * 2 / deltaX * speedMul / 50;
         this.speedY = Math.abs(this.toY - this.fromY) / deltaY * speedMul / 50;
     }
-    moveOnce() {
 
+    moveOnce() {
         let speedX = this.speedX;
         let speedY = this.speedY;
         switch (this.direct) {
@@ -202,7 +216,6 @@ class Message {
                 }
                 break;
             case 'YBUH':
-                // --this.curY;
                 this.curYFloat -= speedY;
                 this.curXFloat += speedX;
                 this.curY = parseInt(this.curYFloat);
@@ -246,14 +259,14 @@ class Message {
 
     draw() {
         this.artifact.shapeDraw(this.curX, this.curY);
-
     }
 }
 
 class Artifact {
+
     constructor() {
         this.alive = true;
-        this.color = '#' + parseInt(Math.random() * 1000000);
+        this.color = '#' + parseInt('' + Math.random() * 1000000);
         const shapesDrawer = [
             (curX, curY) => {
                 new Circle(curX, curY, 10, this.color).draw();
@@ -265,9 +278,10 @@ class Artifact {
                 new Triangle(curX, curY, 20, this.color).draw();
             }
         ];
-        this.shapeDraw = shapesDrawer[parseInt(Math.random() * 1000) % shapesDrawer.length];
+        this.shapeDraw = shapesDrawer[parseInt('' + Math.random() * 1000) % shapesDrawer.length];
         this.msgs = [];
     }
+
     draw() {
         for (let i of this.msgs) {
             if (i.alive) {
@@ -275,6 +289,7 @@ class Artifact {
             }
         }
     }
+
     update() {
         for (let i of this.msgs) {
             if (i.alive) {
@@ -282,6 +297,7 @@ class Artifact {
             }
         }
     }
+
 }
 
 const deltaX = 350;
@@ -297,7 +313,6 @@ const payment = new Rect(beginX + deltaX * 2, beginY, lenY, lenX, '#7cbcff', 'Pa
 const purchase = new Rect(beginX + deltaX, beginY + deltaY, lenY, lenX, '#7cbcff', 'Purchase');
 const fulfillment = new Rect(beginX + deltaX * 2, beginY + deltaY, lenY, lenX, '#7cbcff', 'Fulfillment');
 
-
 const bg = [external, order, payment, purchase, fulfillment];
 
 function drawBg() {
@@ -308,7 +323,3 @@ function drawBg() {
 }
 
 drawBg();
-
-// new Rect(100,100,100,100,'#FF0000', 'fuck').draw();
-
-// new Circle(100,100,100,'#ff0000').draw();

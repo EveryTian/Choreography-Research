@@ -1,22 +1,5 @@
 let artifacts = [];
 
-// function once() {
-//     let y = external.y;
-//     let x = external.x;
-//     let f = () => {
-//         console.log(x, y);
-//         drawBg();
-//         new Circle(x, y, 5, '#ff0000').draw();
-//         x++;
-//         if (x < order.x) {
-//             setTimeout(f, 10);
-//         }
-//     };
-//     setTimeout(f, 10);
-//     new Circle(x, y, 5, '#ff0000').draw();
-// }
-
-// new Circle(100, 100, 5, '#ff0000', "").draw();
 document.getElementById('once').onclick = once;
 
 let artifactNum = 0;
