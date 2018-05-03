@@ -10,6 +10,7 @@ const whiteBoard = document.getElementById('wb');
 
 function writeWhiteBoard(msg) {
     whiteBoard.value += msg;
+    whiteBoard.scrollTo(0, whiteBoard.scrollHeight);
     console.log(msg);
 }
 
