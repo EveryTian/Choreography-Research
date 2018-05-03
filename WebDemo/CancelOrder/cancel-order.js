@@ -149,4 +149,4 @@ setInterval(() => {
         }
     }
     // console.log('Draw Once');
-}, 20
+}, 20)
