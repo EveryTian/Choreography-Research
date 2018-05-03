@@ -140,7 +140,7 @@ function createCancelFulfillment(artifact) {
     artifact.msgs.push(cancelFulfillment);
 }
 
-document.getElementById('pause-control').onclick = document.getElementById('pause-control-checkbox').click;
+document.getElementById('pause-control').onclick = () => document.getElementById('pause-control-checkbox').click();
 
 setInterval(() => {
     if (!document.getElementById('pause-control-checkbox').checked) {
