@@ -35,8 +35,14 @@ class Message:
     def get_from_entity_id(self) -> int:
         return self.__data['from_entity']['id']
 
-    def get_to_entity_type(self) -> str:
-        return self.__data['to_entity_type']
+    def get_to_entities_type(self) -> str:
+        return self.__data['to_entities']['type']
+
+    def get_to_entities_ids(self, parameter_list) -> list:
+        raise self.__data['to_entities']['ids']
+
+    def get_message_data(self) -> dict:
+        return self.__data['data']
 
 
 class MessageGenerator:
