@@ -2,24 +2,46 @@
 
 Message in JSON:
 
+## Current Message Format
+
 ```json
 {
-    "artifact_id": artifact_id, // :: number
-    "message_type": some_message_type, // :: string
-    // "relationships": ??? *1*
+    "artifact_id": "artifact_id :: number",
+    "message_type": "some_message_type :: string",
     "from_entity": {
-        "type": some_entity_type, // :: string
-        "id": entity_id // :: number
-        // "relationships": ??? *2*
+        "type": "some_entity_type :: string",
+        "id": "entity_id :: number"
     },
-    // "to_entity_type": some_entity_type, // :: string *3*
     "to_entities": {
-        "type": some_entity_type, // :: string
+        "type": "some_entity_type :: string",
         "ids": [
-            entity_id // :: number
+            "entity_id :: number"
         ]
-    } // *4*
-    "data": data // :: json
+    },
+    "data": "data :: json"
+}
+```
+
+## Some Questions
+
+```json
+{
+    "artifact_id": "artifact_id :: number",
+    "message_type": "some_message_type :: string",
+    "relationships": "??? *1*",
+    "from_entity": {
+        "type": "some_entity_type :: string",
+        "id": "entity_id :: number",
+        "relationships": "??? *2*"
+    },
+    "to_entity_type": "some_entity_type :: string *3*",
+    "to_entities *4*": {
+        "type": "some_entity_type :: string"
+        "ids": [
+            "entity_id :: number"
+        ]
+    },
+    "data": "data :: json"
 }
 ```
 
