@@ -50,3 +50,4 @@ Question:
 1. Where to place `relationships`, at *1* or *2* ?
 2. How to present `relationships` ?
 3. Contains `to_entity_id` or not, at *3* or *4* ?
+4. Who acts as `External` and how to deal with `External` ?
