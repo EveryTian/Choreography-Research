@@ -7,10 +7,13 @@ messages_to_receive: dict = {
     #    message_handler(message_data, entity_data) : function,
     #    (
     #        snapshot : list, entity_data => bool : function, # The business rules to meet
-    #        [(to_entity_type : string, entity_data => [id : number], entity_data => send_data: function)]
+    #        [(message_type : string, entity_data => [id : number], entity_data => send_data: function)]
     #    )
     # )
 }
-machines_addresses = {
+messages_paths: dict = {
+    # message_type: (from_entity_type, to_entities_type)
+}
+machines_addresses: dict = {
     # machine_name : ip_address
 }

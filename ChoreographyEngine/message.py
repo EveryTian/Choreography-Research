@@ -1,7 +1,9 @@
 #! python3
 # coding: utf-8
 
+import setting
 import json
+from requests import post
 
 
 class Message:
@@ -45,5 +47,36 @@ class Message:
         return self.__data['data']
 
 
-class MessageGenerator:
-    pass
+class MessageHandler:
+
+    def __init__(self, artifact_id: int, message_type: str, from_entity_type: str, from_entity_id: int, to_entities_type: str, to_entities_ids: list, data: dict):
+        self.__data = {
+            'artifact_id': artifact_id,
+            'message_type': message_type,
+            'from_entity': {
+                'type': from_entity_type,
+                'id': from_entity_id
+            },
+            'to_entities': {
+                'type': to_entities_type,
+                'ids': to_entities_ids
+            },
+            'data': data
+        }
+        self.__to_address = setting.machines_addresses[to_entities_type]
+
+    def __str__(self):
+        return 'MessageHandler: ' + str(self.__data)
+
+    __repr__ = __str__
+
+    def get_data_string(self):
+        return json.dumps(self.__data)
+
+    def get_data_dict(self):
+        return self.__data
+
+    def send(self, address: str = None):
+        if address is None or type(address) is not str:
+            address = self.__to_address
+        post(address, json=self.__data)

@@ -2,12 +2,7 @@
 # coding: utf-8
 
 import setting
-from message import Message
-
-
-# class Artifact:
-#     def __init__():
-#         self.__entities = []
+from message import Message, MessageHandler
 
 
 class Entity:
@@ -29,8 +24,7 @@ class Entity:
     def __str__(self):
         return "%s[%d]in(%d)" % (self.__entity_type, self.__entity_id, self.__artifact_id)
 
-    def __repr__(self):
-        return str(self)
+    __repr__ = __str__
 
     def get_artifact_id(self) -> int:
         return self.__artifact_id
@@ -67,7 +61,18 @@ class Entity:
             return
         message_type = message.get_message_type()
         self.__snapshot[message_type] = True
-        # TODO: Pattern match
-        # (dataHandler, (...)) = setting.messages_to_receive[message_type]
-        
-        
+        (data_handler,
+         bussiness_rule) = setting.messages_to_receive[message_type]
+        data_handler(message.get_data(), self.__data)
+        (snapshot_to_meet, logic_rule, messages_to_send) = bussiness_rule
+        # TODO: Choose `is_just_messages_got` or `is_messages_got`?
+        if self.is_just_messages_got(snapshot_to_meet) and logic_rule(self.__data):
+            for (message_type, to_entities_ids_generator, send_data_generator) in messages_to_send:
+                (from_entity_type,
+                 to_entities_type) = setting.messages_paths[message_type]
+                if from_entity_type != setting.entity_type:
+                    continue
+                to_entities_ids = to_entities_ids_generator(self.__data)
+                send_data = send_data_generator(self.__data)
+                MessageHandler(self.__artifact_id, message_type, from_entity_type,
+                               self.__entity_id, to_entities_type, to_entities_ids, send_data).send()
