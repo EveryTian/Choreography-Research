@@ -36,7 +36,7 @@ Message in JSON:
     },
     "to_entity_type": "some_entity_type :: string *3*",
     "to_entities *4*": {
-        "type": "some_entity_type :: string"
+        "type": "some_entity_type :: string",
         "ids": [
             "entity_id :: number"
         ]
