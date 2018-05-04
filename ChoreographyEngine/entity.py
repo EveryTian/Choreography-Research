@@ -72,7 +72,8 @@ class Entity:
                  to_entities_type) = setting.messages_paths[message_type]
                 if from_entity_type != setting.entity_type:
                     continue
-                to_entities_ids = to_entities_ids_generator(self.__data)
+                to_entities_ids = to_entities_ids_generator(
+                    self.__entity_id, self.__data)
                 send_data = send_data_generator(self.__data)
                 MessageHandler(self.__artifact_id, message_type, from_entity_type,
                                self.__entity_id, to_entities_type, to_entities_ids, send_data).send()

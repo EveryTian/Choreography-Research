@@ -7,7 +7,7 @@ messages_to_receive: dict = {
     #    message_handler(message_data, entity_data) : function,
     #    (
     #        snapshot : list, entity_data => bool : function, # The business rules to meet
-    #        [(message_type : string, entity_data => [id : number], entity_data => send_data: function)]
+    #        [(message_type : string, (entity_id, entity_data) => [id : number], entity_data => send_data: function)]
     #    )
     # )
 }
