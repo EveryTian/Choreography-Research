@@ -19,6 +19,7 @@ class Entity:
         self.__entity_type = entity_type
         self.__entity_id = entity_id
         self.__snapshot = {}
+        self.__data = setting.entity_default_data
         for message_type in setting.messages_to_receive:
             self.__snapshot[message_type] = False
 
@@ -43,6 +44,9 @@ class Entity:
     def get_snapshot(self) -> dict:
         return self.__snapshot
 
+    def get_data(self) -> dict:
+        return self.__data
+
     def is_messages_got(self, messages_types: list) -> bool:
         for message_type in messages_types:
             if not self.__snapshot[message_type]:
@@ -59,8 +63,11 @@ class Entity:
         return True
 
     def handleMessage(self, message: Message):
-        if message.get_artifact_id() != self.__artifact_id or message.get_to_entity_type != setting.entity_type:
+        if message.get_artifact_id() != self.__artifact_id:
             return
         message_type = message.get_message_type()
         self.__snapshot[message_type] = True
+        # TODO: Pattern match
+        # (dataHandler, (...)) = setting.messages_to_receive[message_type]
+        
         

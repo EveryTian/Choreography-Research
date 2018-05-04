@@ -22,9 +22,15 @@ def listen():
 
 
 def handle_message(message: Message):
+    if message.get_to_entities_type != setting.entity_type:
+        return
     artifact_id = message.get_artifact_id()
     if artifact_id not in artifacts:
-        artifacts[artifact_id] = []
+        artifacts[artifact_id] = {}
     artifact = artifacts[artifact_id]
-    # message.
-    # Entity(artifact_id, machine_name, artifact_)
+    to_entities_ids = message.get_to_entities_ids()
+    for to_entity_id in to_entities_ids:
+        if to_entity_id not in artifact:
+            artifact[to_entity_id] = Entity(artifact_id, setting.entity_type, to_entity_id)
+        artifact[to_entity_id].handle_message(message)
+    # TODO: Need something more?
