@@ -1,9 +1,15 @@
 #! python3
 # coding: utf-8
 
-import setting
+import sys
+from importlib import import_module
 import json
 from requests import post
+
+if len(sys.argv) == 2:
+    setting = import_module(sys.argv[1])
+else:
+    setting = import_module('setting')
 
 
 class Message:
@@ -49,7 +55,9 @@ class Message:
 
 class MessageHandler:
 
-    def __init__(self, artifact_id: int, message_type: str, from_entity_type: str, from_entity_id: int, to_entities_type: str, to_entities_ids: list, data: dict):
+    def __init__(self, artifact_id: int, message_type: str,
+                 from_entity_type: str, from_entity_id: int,
+                 to_entities_type: str, to_entities_ids: list, data: dict):
         self.__data = {
             'artifact_id': artifact_id,
             'message_type': message_type,

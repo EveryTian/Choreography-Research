@@ -1,13 +1,19 @@
 #! python3
 # coding: utf-8
 
-import setting
+import sys
+from importlib import import_module
 from message import Message, MessageHandler
+
+if len(sys.argv) == 2:
+    setting = import_module(sys.argv[1])
+else:
+    setting = import_module('setting')
 
 
 class Entity:
 
-    # Here may be some static data
+    # Here **may** be some static data
 
     def __init__(self, artifact_id: int, entity_type: str, entity_id: int):
         self.__artifact_id = artifact_id
@@ -19,7 +25,10 @@ class Entity:
             self.__snapshot[message_type] = False
 
     def __eq__(self, obj):
-        return type(obj) is Entity and self.__artifact_id == obj.__artifact_id and self.__entity_type == obj.__entity_type and self.__entity_id == obj.__entity_id
+        return type(obj) is Entity \
+               and self.__artifact_id == obj.__artifact_id \
+               and self.__entity_type == obj.__entity_type \
+               and self.__entity_id == obj.__entity_id
 
     def __str__(self):
         return "%s[%d]in(%d)" % (self.__entity_type, self.__entity_id, self.__artifact_id)

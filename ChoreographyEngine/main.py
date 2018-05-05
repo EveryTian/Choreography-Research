@@ -1,11 +1,16 @@
 #! python3
 # coding: utf-8
 
-import setting
+import sys
+from importlib import import_module
 from flask import Flask, request
 from message import Message
 from entity import Entity
 
+if len(sys.argv) == 2:
+    setting = import_module(sys.argv[1])
+else:
+    setting = import_module('setting')
 
 artifacts: dict = {}
 
@@ -34,3 +39,7 @@ def handle_message(message: Message):
             artifact[to_entity_id] = Entity(artifact_id, setting.entity_type, to_entity_id)
         artifact[to_entity_id].handle_message(message)
     # TODO: Need something more?
+
+
+if __name__ == '__main__':
+    listen()
