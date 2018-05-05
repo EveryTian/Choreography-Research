@@ -46,7 +46,7 @@ class Message:
     def get_to_entities_type(self) -> str:
         return self.__data['to_entities']['type']
 
-    def get_to_entities_ids(self, parameter_list) -> list:
+    def get_to_entities_ids(self) -> list:
         raise self.__data['to_entities']['ids']
 
     def get_message_data(self) -> dict:

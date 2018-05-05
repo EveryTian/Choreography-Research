@@ -152,4 +152,4 @@ messages_to_receive: dict
       pass # This function presents the relationships.
   ```
 
-**Click Here: **[**Message Format and Some Questions**](message_format.md)
+**Click Here:** [**Message Format and Some Questions**](message_format.md)

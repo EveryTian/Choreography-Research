@@ -19,7 +19,7 @@ def listen():
     app = Flask(__name__)
 
     @app.route('/', methods=['POST'])
-    def listen():
+    def listen_handler():
         handle_message(Message(request.get_json()))
         return setting.machine_name + ' HANDLED'
 
