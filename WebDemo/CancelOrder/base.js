@@ -84,41 +84,41 @@ class Rect {
 
 }
 
-class Line {
-
-    constructor(x0, y0, x1, y1, color) {
-        this.x0 = x0;
-        this.x1 = x1;
-        this.y0 = y0;
-        this.y1 = y1;
-        this.color = color;
-    }
-
-    draw() {
-        if (this.color !== undefined) {
-            drawingContext.fillStyle = this.color;
-        }
-        drawingContext.moveTo(this.x0, this.y0);
-        drawingContext.lineTo(this.x1, this.y1);
-    }
-
-}
-
-class Lines {
-
-    constructor(from, to, ...lines) {
-        this.lines = lines;
-        this.from = from;
-        this.to = to;
-    }
-
-    draw() {
-        for (let line of this.lines) {
-            line.draw();
-        }
-    }
-
-}
+// class Line {
+//
+//     constructor(x0, y0, x1, y1, color) {
+//         this.x0 = x0;
+//         this.x1 = x1;
+//         this.y0 = y0;
+//         this.y1 = y1;
+//         this.color = color;
+//     }
+//
+//     draw() {
+//         if (this.color !== undefined) {
+//             drawingContext.fillStyle = this.color;
+//         }
+//         drawingContext.moveTo(this.x0, this.y0);
+//         drawingContext.lineTo(this.x1, this.y1);
+//     }
+//
+// }
+//
+// class Lines {
+//
+//     constructor(from, to, ...lines) {
+//         this.lines = lines;
+//         this.from = from;
+//         this.to = to;
+//     }
+//
+//     draw() {
+//         for (let line of this.lines) {
+//             line.draw();
+//         }
+//     }
+//
+// }
 
 class Circle {
 
@@ -150,24 +150,24 @@ class Message {
         this.fn = fn;
         this.artifact = artifact;
         this.color = artifact.color;
-        this.from = from;
-        this.to = to;
+        // this.from = from;
+        // this.to = to;
         this.fromX = from.x + from.width / 2;
         this.fromY = from.y + from.height / 2;
         this.toX = to.x + to.width / 2;
         this.toY = to.y + to.height / 2;
-        this.curXFloat = this.curX = this.fromX;
-        this.curYFloat = this.curY = this.fromY;
+        this.curX = this.fromX;
+        this.curY = this.fromY;
         this.direct = '';
         if (this.toX > this.fromX) {
-            this.direct += 'YB';
+            this.direct += 'R';
         } else if (this.toX < this.fromX) {
-            this.direct += 'ZO';
+            this.direct += 'L';
         }
         if (this.toY > this.fromY) {
-            this.direct += 'XW';
+            this.direct += 'D';
         } else if (this.toY < this.fromY) {
-            this.direct += 'UH';
+            this.direct += 'U';
         }
         this.alive = true;
         let speedMul = Math.random() * 100;
@@ -184,70 +184,54 @@ class Message {
         let speedX = this.speedX;
         let speedY = this.speedY;
         switch (this.direct) {
-            case 'UH':
-                this.curYFloat -= speedY;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
-                if (this.curYFloat <= this.toY) {
+            case 'U':
+                this.curY -= speedY;
+                if (this.curY <= this.toY) {
                     this.alive = false;
                 }
                 break;
-            case 'XW':
-                this.curYFloat += speedY;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'D':
+                this.curY += speedY;
                 if (this.curY >= this.toY) {
                     this.alive = false;
                 }
                 break;
-            case 'ZO':
-                this.curXFloat -= speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
-                if (this.curXFloat <= this.toX) {
+            case 'L':
+                this.curX -= speedX;
+                if (this.curX <= this.toX) {
                     this.alive = false;
                 }
                 break;
-            case 'YB':
-                this.curXFloat += speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'R':
+                this.curX += speedX;
                 if (this.curX >= this.toX) {
                     this.alive = false;
                 }
                 break;
-            case 'YBUH':
-                this.curYFloat -= speedY;
-                this.curXFloat += speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'RU':
+                this.curY -= speedY;
+                this.curX += speedX;
                 if (this.curY <= this.toY || this.curX >= this.toX) {
                     this.alive = false;
                 }
                 break;
-            case 'YBXW':
-                this.curYFloat += speedY;
-                this.curXFloat += speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'RD':
+                this.curY += speedY;
+                this.curX += speedX;
                 if (this.curY >= this.toY || this.curX >= this.toX) {
                     this.alive = false;
                 }
                 break;
-            case 'ZOXW':
-                this.curYFloat += speedY;
-                this.curXFloat -= speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'LD':
+                this.curY += speedY;
+                this.curX -= speedX;
                 if (this.curY >= this.toY || this.curX <= this.toX) {
                     this.alive = false;
                 }
                 break;
-            case 'ZOUH':
-                this.curYFloat -= speedY;
-                this.curXFloat -= speedX;
-                this.curY = parseInt(this.curYFloat);
-                this.curX = parseInt(this.curXFloat);
+            case 'LU':
+                this.curY -= speedY;
+                this.curX -= speedX;
                 if (this.curY <= this.toY || this.curX <= this.toX) {
                     this.alive = false;
                 }
@@ -261,6 +245,7 @@ class Message {
     draw() {
         this.artifact.shapeDraw(this.curX, this.curY);
     }
+
 }
 
 class Artifact {
