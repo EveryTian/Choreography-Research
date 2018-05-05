@@ -18,9 +18,31 @@ Python 3.6.5 :: Anaconda custom (64-bit)
 
 ## How to Use
 
-Configure `setting.py`:
+### Run the Engine
 
-### Public Part
+- Default: (Use `setting.py` as the config file.)
+
+  ```shell
+  $ python main.py # Or you can change the name of `main.py`.
+  ```
+
+- Use `some-folder/another-folder/some-file.py` as the config file:
+
+  ```shell
+  $ python main.py some-folder.another-folder.some-file
+  ```
+
+  Use `setting.py` as the config file:
+
+  ```shell
+  $ python main.py setting
+  ```
+
+### Configure the Engine
+
+Configure `setting.py` (Or another file name):
+
+#### Public Part
 
 All the machines in one artifact share the same public part, namely, the following two variables:
 
@@ -54,7 +76,7 @@ machines_addresses: dict
       'OrderCancel': ('External', 'Order'),
       'ReshippingBack': ('Order', 'External'),
       'CancelPurchase': ('Order', 'Purchase'),
-      'CancelFullment': ('Order', 'Fulfillment')
+      'CancelFulfillment': ('Order', 'Fulfillment')
   }
   machines_addresses: dict = {
       'Order': '192.168.1.1',
@@ -64,7 +86,7 @@ machines_addresses: dict
   }
   ```
 
-### Private Part
+#### Private Part
 
 The artifact on each machine:
 
@@ -124,10 +146,10 @@ messages_to_receive: dict
          )
       )
   }
-  def payment_cancel_data_handler(messsage_data, entity_data):
+  def payment_cancel_data_handler(message_data, entity_data):
       return
   def payment_cancel_get_to_ids_list(from_entity_id, from_entity_data) -> list:
       pass # This function presents the relationships.
   ```
 
-[**Message Format and Some Questions**](message_format.md)
+**Click Here: **[**Message Format and Some Questions**](message_format.md)
