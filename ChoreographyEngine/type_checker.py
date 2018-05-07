@@ -14,9 +14,12 @@ A Type Checker for Python Basic Data Types:
         List: list
         Dictionary: dict
 * Some restriction of usage:
-    1. Not really Python type but static data type (so it's possible to check)
-    2. Only available for the 4 compound data.
+    1. Not really Python type but static data type;
+    2. Only available for the 4 compound data;
+    3. Cannot check arguments' type of functions.
 """
+
+function_type = type(lambda _: _)
 
 
 def check_type(element, some_type) -> bool:
@@ -46,7 +49,8 @@ if __name__ == '__main__':
             (2, float, False),
             ('', str, True),
             ('str', complex, False),
-            (False, bool, True)
+            (False, bool, True),
+            (check_type, function_type, True)
         ],
         'Simple compound data type - list': [
             ([], [int], True),
@@ -84,7 +88,9 @@ if __name__ == '__main__':
             ({'': [1, 23], 'qwe': [2], '//': ['']}, {str: [int]}, False),
             ({'': {}, ' ': {}, '  ': {}}, {str: {int: int}}, True),
             ({'': {}, ' ': {}, '  ': {}}, {str: {str: (int, int, [str])}}, True),
-            ({'12': {'23': (1, 2, [(1, 2, '', False)])}}, {str: {str: (int, int, [(int, int, str, bool)])}}, True)
+            ({'12': {'23': (1, 2, [(1, 2, '', False)])}}, {str: {str: (int, int, [(int, int, str, bool)])}}, True),
+            ({'12': {'23': (check_type, [(check_type,)])}}, {str: {str: (function_type, [(function_type,)])}}, True)
+
         ],
         'Test compound types as simple data types': [
             ({}, dict, True),
@@ -97,6 +103,7 @@ if __name__ == '__main__':
         ],
         'Type as type': [
             (int, type, True),
+            (function_type, type, True),
             ({int}, {type}, True),
             ({type}, {type}, True)
         ]
