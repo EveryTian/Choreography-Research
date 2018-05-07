@@ -79,10 +79,10 @@ machines_addresses: dict
       'CancelFulfillment': ('Order', 'Fulfillment')
   }
   machines_addresses: dict = {
-      'Order': '192.168.1.1',
-      'Purchase': '192.168.1.2',
-      'Fulfillment': '192.168.1.3',
-      'Payment': '192.168.1.4'
+      'Order': 'http://192.168.1.1:3000',
+      'Purchase': 'http://192.168.1.2',
+      'Fulfillment': 'http://192.168.1.3:8000',
+      'Payment': 'http://192.168.1.4:80'
   }
   ```
 
