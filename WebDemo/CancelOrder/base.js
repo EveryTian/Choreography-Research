@@ -18,6 +18,7 @@ function clearPad() {
     drawingPad.height = screenHeight;
 }
 
+
 class Text {
 
     constructor(x, y, text, size, font) {
@@ -35,6 +36,7 @@ class Text {
     }
 
 }
+
 
 class Triangle {
 
@@ -58,6 +60,7 @@ class Triangle {
     }
 
 }
+
 
 class Rect {
 
@@ -84,41 +87,6 @@ class Rect {
 
 }
 
-// class Line {
-//
-//     constructor(x0, y0, x1, y1, color) {
-//         this.x0 = x0;
-//         this.x1 = x1;
-//         this.y0 = y0;
-//         this.y1 = y1;
-//         this.color = color;
-//     }
-//
-//     draw() {
-//         if (this.color !== undefined) {
-//             drawingContext.fillStyle = this.color;
-//         }
-//         drawingContext.moveTo(this.x0, this.y0);
-//         drawingContext.lineTo(this.x1, this.y1);
-//     }
-//
-// }
-//
-// class Lines {
-//
-//     constructor(from, to, ...lines) {
-//         this.lines = lines;
-//         this.from = from;
-//         this.to = to;
-//     }
-//
-//     draw() {
-//         for (let line of this.lines) {
-//             line.draw();
-//         }
-//     }
-//
-// }
 
 class Circle {
 
@@ -150,8 +118,6 @@ class Message {
         this.fn = fn;
         this.artifact = artifact;
         this.color = artifact.color;
-        // this.from = from;
-        // this.to = to;
         this.fromX = from.x + from.width / 2;
         this.fromY = from.y + from.height / 2;
         this.toX = to.x + to.width / 2;
@@ -248,6 +214,7 @@ class Message {
 
 }
 
+
 class Artifact {
 
     constructor() {
@@ -285,6 +252,7 @@ class Artifact {
     }
 
 }
+
 
 const deltaX = 350;
 const deltaY = deltaX / 2;
