@@ -53,10 +53,16 @@ machines_addresses: dict
 
 - Type
 
-  ````haskell
+  ```haskell
   messages_paths :: Dict String (String, String)
   machines_address :: Dict String String
-  ````
+  ```
+  ```python
+  # For type_checker.py:
+  messages_paths_type = {str: (str, str)}
+  machines_address_type = {str: str}
+  ```
+  
 
 - Content
 
@@ -106,6 +112,14 @@ messages_to_receive: dict
   machine_name :: String
   entity_default_data :: JsonDict
   messages_to_receive :: Dict String (String -> String -> (), ([String], JsonDict -> Bool, [(String, Int -> JsonDict -> [Int], JsonDict -> JsonDict)]))
+  ```
+  ```python
+  # For type_checker.py:
+  listen_port_type = int
+  entity_type_type = str
+  machine_name_type = str
+  entity_default_data_type = dict
+  messages_to_receive_type = {str: (function_type, ([str], function_type, [(str, function_type, function_type)]))}
   ```
 
 - Content
