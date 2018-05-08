@@ -50,8 +50,8 @@ def check_setting():
         ('entity_default_data', setting.entity_default_data, dict),
         ('messages_to_receive', setting.messages_to_receive,
          {str: (function_type, ([str], function_type, [(str, function_type, function_type)]))}),
-        ('messages_to_receive', setting.messages_to_receive, {str: (str, str)}),
-        ('machine_address', setting.machine_address, {str: str})
+        ('messages_paths', setting.messages_paths, {str: (str, str)}),
+        ('machines_addresses', setting.machines_addresses, {str: str})
     ]
     for (setting_item_name, setting_item, right_type) in right_types:
         if not check_type(setting_item, right_type):
@@ -62,7 +62,7 @@ def check_setting():
         sys.stderr.write("Config Error: `entity_type` is `%s` while `machine_name` is `%s`.\n" %
                          (setting.entity_type, setting.machine_name))
         return False
-    if setting.entity_type not in setting.machine_address:
+    if setting.entity_type not in setting.machines_addresses:
         sys.stderr.write("Config Error: `entity_type` `%s` is not in `machine_address` list.\n" %
                          setting.entity_type)
         return False
