@@ -17,10 +17,10 @@ entity_type: str = 'External'
 machine_name: str = entity_type
 entity_default_data: dict = {}
 messages_to_receive: dict = {
-    'ACK': {
+    'ACK': (
         lambda message_data, entity_data: print(message_data, entity_type),
         (
             [], lambda _: False, []  # `lambda _: False` means 'ACK' ends with no messages to be sent out.
         )
-    }
+    )
 }

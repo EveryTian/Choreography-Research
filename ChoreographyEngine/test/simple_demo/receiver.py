@@ -17,7 +17,7 @@ entity_type: str = 'Receiver'
 machine_name: str = entity_type
 entity_default_data: dict = {}
 messages_to_receive: dict = {
-    'MSG': {
+    'MSG': (
         lambda _0, _1: None,
         (
             ['MSG'],
@@ -26,5 +26,5 @@ messages_to_receive: dict = {
                 ('REC', lambda entity_id, _: [entity_id], lambda _: {})
             ]
         )
-    }
+    )
 }
