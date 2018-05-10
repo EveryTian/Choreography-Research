@@ -3,6 +3,7 @@
 
 import sys
 from importlib import import_module
+from threading import Thread
 from flask import Flask, request
 from message import Message
 from entity import Entity
@@ -20,14 +21,19 @@ def listen():
 
     @app.route('/', methods=['POST'])
     def listen_handler():
-        handle_message(Message(request.get_json()))
+        message_dict = request.get_json()
+
+        def message_handler():
+            handle_message(Message(message_dict))
+
+        Thread(target=message_handler).start()
         return setting.machine_name + ' HANDLED'
 
     app.run(port=setting.listen_port)
 
 
 def handle_message(message: Message):
-    if message.get_to_entities_type != setting.entity_type:
+    if message.get_to_entities_type() != setting.entity_type:
         return
     artifact_id = message.get_artifact_id()
     if artifact_id not in artifacts:

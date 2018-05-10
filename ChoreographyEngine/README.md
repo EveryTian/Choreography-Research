@@ -1,6 +1,6 @@
 # Choreography Engine
 
-![ENGINE - NOT TEST](https://img.shields.io/badge/ENGINE-NOT%20TEST-orange.svg)
+![SIMPLE TEST - PASS](https://img.shields.io/badge/SIMPLE%20TEST-PASS-green.svg)![FULL TEST - NEEDED](https://img.shields.io/badge/FULL%20TEST-NEEDED-orange.svg)
 
 ## Environment
 
@@ -32,6 +32,8 @@ Python 3.6.5 :: Anaconda custom (64-bit)
   $ python main.py some-folder.another-folder.some-file
   ```
 
+  ***Attention:*** *`some-folder/another-folder/some-file.py` should have module structure. Namely, `import some-folder.another-folder.some-file` can be executed properly in Python.*
+
   Use `setting.py` as the config file:
 
   ```shell
@@ -62,7 +64,6 @@ machines_addresses: dict
   messages_paths_type = {str: (str, str)}
   machines_address_type = {str: str}
   ```
-  
 
 - Content
 

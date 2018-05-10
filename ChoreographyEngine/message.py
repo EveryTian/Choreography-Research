@@ -3,6 +3,7 @@
 
 import sys
 from importlib import import_module
+from threading import Thread
 import json
 from requests import post
 
@@ -47,7 +48,7 @@ class Message:
         return self.__data['to_entities']['type']
 
     def get_to_entities_ids(self) -> list:
-        raise self.__data['to_entities']['ids']
+        return self.__data['to_entities']['ids']
 
     def get_message_data(self) -> dict:
         return self.__data['data']
@@ -87,4 +88,9 @@ class MessageHandler:
     def send(self, address: str = None):
         if address is None or type(address) is not str:
             address = self.__to_address
-        post(address, json=self.__data)
+
+        def post_thread_target():
+            response = post(address, json=self.__data, timeout=10)
+            print(response, response.text)
+
+        Thread(target=post_thread_target).start()
