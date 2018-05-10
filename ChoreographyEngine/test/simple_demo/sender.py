@@ -30,7 +30,7 @@ messages_to_receive: dict = {
     'REC': (
         lambda message_data, entity_data: None,
         (
-            ['REC'],
+            ['SIG', 'REC'],
             lambda entity_data: True,
             [
                 ('ACK', lambda entity_id, entity_data: [entity_id], lambda entity_data: {})
