@@ -1,6 +1,6 @@
 # Choreography Engine
 
-![SIMPLE TEST - PASS](https://img.shields.io/badge/SIMPLE%20TEST-PASS-green.svg)![FULL TEST - NEEDED](https://img.shields.io/badge/FULL%20TEST-NEEDED-orange.svg)
+![SIMPLE TEST - PASS](https://img.shields.io/badge/SIMPLE%20TEST-PASS-green.svg) ![FULL TEST - NEEDED](https://img.shields.io/badge/FULL%20TEST-NEEDED-orange.svg)
 
 ## Environment
 
@@ -153,7 +153,7 @@ messages_to_receive: dict
   entity_default_data = {}
   messages_to_receive = {
       'PaymentCancel': (
-         payment_cancel_data_handler
+         payment_cancel_data_handler,
          (
              ['PaymentCancel'],
              lambda _: True,
