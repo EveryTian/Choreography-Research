@@ -147,7 +147,19 @@ messages_to_receive: dict
   }
   ```
 
-  **Attention: `entity_type` should be equal to `machine_name` .**
+  - **Attention 1: `entity_type` should be equal to `machine_name` .**
+   
+  - **Attention 2: There is a strict mode for `snapshot_to_meet`. In the strict mode, the snapshot meets only if `snapshot_to_meet` is the same as the snapshot in an entity. To enable the strict mode, just make `snapshot_to_meet[0]` the empty string `''`.**
+
+    For example:
+    
+    - Both `snapshot_to_meet = ['A']` (nonstrict mode) and `snapshot_to_meet = ['A', 'B']` (nonstrict mode) meets the entity snapshot `['A', 'B', 'C']`.
+    
+    - `snapshot_to_meet = ['A', 'B', 'C', 'D']` (nonstrict mode) does not meet the entity snapshot `['A', 'B', 'C']`.
+    
+    - `snapshot_to_meet = ['', 'A']` (strict mode), `snapshot_to_meet = ['', 'A', 'B']` (strict mode) and `snapshot_to_meet = ['', 'A', 'B', 'C', 'D']` (strict mode) do not meet the entity snapshot `['A', 'B', 'C']`.
+    
+    - In the strict mode, only `snapshot_to_meet = ['', 'A', 'B', 'C']` meets the entity snapshot `['A', 'B', 'C']`.
 
 - Example
 
