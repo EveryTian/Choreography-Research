@@ -20,7 +20,7 @@ OrderCancel(\mu,EXT,o)\rightarrow&ReshippingBack(\mu,o,EXT)\\
 4.&ShippingUndone(\mu,f,o)\rightarrow OrderUndone(\mu,o,EXT)\\
 5.&OrderUndone(\mu,o,EXT)\rightarrow PaymentCancel(\mu,EXT,p)\\
 6.&PaymentCancel(\mu,EXT,p)\rightarrow OrderPaymentUndone(\mu,p,o)\\
-7.&OrderPaymentUndone(\mu,p,o)\rightarrow InVoice(\mu,o,e)
+7.&OrderPaymentUndone(\mu,p,o)\rightarrow InVoice(\mu,o,EXT)
 \end{aligned}
 $$
 
