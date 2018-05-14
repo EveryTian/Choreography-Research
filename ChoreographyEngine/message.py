@@ -90,7 +90,8 @@ class MessageHandler:
             address = self.__to_address
 
         def post_thread_target():
+            print('[S]', 'Send Message:', self.__data)
             response = post(address, json=self.__data, timeout=10)
-            print(response, response.text)
+            print('[R]', response, response.text)
 
         Thread(target=post_thread_target).start()

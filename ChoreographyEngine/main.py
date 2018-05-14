@@ -21,13 +21,16 @@ def listen():
 
     @app.route('/', methods=['POST'])
     def listen_handler():
-        message_dict = request.get_json()
+        message = Message(request.get_json())
+        message_info = message.get_message_type() + '[' + str(message.get_artifact_id()) + ']' + \
+            '(' + str(message.get_from_entity_id()) + '->' + str(message.get_to_entities_ids()) + ')'
+        print('[L]', message_info)
 
         def message_handler():
-            handle_message(Message(message_dict))
+            handle_message(message)
 
         Thread(target=message_handler).start()
-        return setting.machine_name + ' HANDLED'
+        return setting.machine_name + '_GOT_' + message_info
 
     app.run(port=setting.listen_port)
 
