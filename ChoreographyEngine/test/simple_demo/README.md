@@ -1,5 +1,7 @@
 # Demo Config
 
+![TEST - PASS](https://img.shields.io/badge/TEST-PASS-green.svg)
+
 A demo with no logical predicates.
 
 ## Demo Model

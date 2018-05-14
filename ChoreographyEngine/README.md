@@ -1,6 +1,6 @@
 # Choreography Engine
 
-![SIMPLE TEST - PASS](https://img.shields.io/badge/SIMPLE%20TEST-PASS-green.svg) ![FULL TEST - NEEDED](https://img.shields.io/badge/FULL%20TEST-NEEDED-orange.svg)
+![DEMO TEST - PASS](https://img.shields.io/badge/DEMO%20TEST-PASS-green.svg) ![FULL TEST - NEEDED](https://img.shields.io/badge/FULL%20TEST-NEEDED-orange.svg)
 
 ## Environment
 
@@ -15,6 +15,11 @@ Python 3.6.5 :: Anaconda custom (64-bit)
 >>> requests.__version__
 '2.18.4'
 ```
+
+## Test Demos
+
+- [Simple Demo](test/simple_demo) (Pass)
+- [Cancel Order Demo](test/cancel_order_demo) (Pass)
 
 ## How to Use
 
