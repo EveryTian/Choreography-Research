@@ -7,11 +7,11 @@ This is a simple implementation for the "Cancel Order Artifact".
 - One-to-one relationships.
 - No complex business rules (No need for entity data).
 
-See more in [Cancel Order](\Research\CancelOrder).
+See more in [Cancel Order](/Research/CancelOrder).
 
 ## Business Rules
 
-![Business Rules](\Research\CancelOrder\CancelOrderBussinessRulesInMathJaxForGithub.png)
+![Business Rules](/Research/CancelOrder/CancelOrderBussinessRulesInMathJaxForGithub.png)
 
 ## Config Content
 
