@@ -66,16 +66,17 @@ class Entity:
         return True
 
     def handle_message(self, message: Message):
-        if message.get_artifact_id() != self.__artifact_id:
-            return
         message_type = message.get_message_type()
         self.__snapshot[message_type] = True
         (data_handler,
          business_rule) = setting.messages_to_receive[message_type]
         data_handler(message.get_message_data(), self.__data)
         (snapshot_to_meet, logic_rule, messages_to_send) = business_rule
-        # TODO: Choose `is_just_messages_got` or `is_messages_got`?
-        if self.is_just_messages_got(snapshot_to_meet) and logic_rule(self.__data):
+        is_messages_got = self.is_messages_got
+        if len(snapshot_to_meet) > 0 and snapshot_to_meet[0] == '':
+            snapshot_to_meet.remove('')
+            is_messages_got = self.is_just_messages_got
+        if is_messages_got(snapshot_to_meet) and logic_rule(self.__data):
             for (message_type, to_entities_ids_generator, send_data_generator) in messages_to_send:
                 (from_entity_type,
                  to_entities_type) = setting.messages_paths[message_type]
