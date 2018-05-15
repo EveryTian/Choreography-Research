@@ -1,3 +1,12 @@
+# Public Part
+messages_paths: dict = {
+    # message_type: (from_entity_type, to_entities_type)
+}
+machines_addresses: dict = {
+    # machine_name : ip_address
+}
+
+# Private Part
 listen_port: int = 5000
 entity_type: str = 'some_entity_type'
 machine_name: str = entity_type
@@ -11,9 +20,10 @@ messages_to_receive: dict = {
     #    )
     # )
 }
-messages_paths: dict = {
-    # message_type: (from_entity_type, to_entities_type)
-}
-machines_addresses: dict = {
-    # machine_name : ip_address
-}
+
+# For External
+begin_message: str = ''
+
+
+def begin_message_to_entities_ids_chooser():  # Need 2 arguments: entity_id, entity_data
+    pass

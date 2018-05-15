@@ -12,7 +12,6 @@ machines_addresses: dict = {
 }
 
 # Private Part
-begin_message: str = 'SIG'
 listen_port: int = 8001
 entity_type: str = 'External'
 machine_name: str = entity_type
@@ -25,3 +24,10 @@ messages_to_receive: dict = {
         )
     )
 }
+
+# For External
+begin_message: str = 'SIG'
+
+
+def begin_message_to_entities_ids_chooser(entity_id, _):
+    return [entity_id]

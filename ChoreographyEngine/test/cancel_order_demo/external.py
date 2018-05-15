@@ -51,3 +51,11 @@ messages_to_receive: dict = {
         ([], lambda _: False, [])
     )
 }
+
+
+# For External
+begin_message: str = 'OrderCancel'
+
+
+def begin_message_to_entities_ids_chooser(entity_id, _):
+    return [entity_id]

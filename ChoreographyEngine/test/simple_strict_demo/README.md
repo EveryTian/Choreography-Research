@@ -55,7 +55,7 @@ Everything is the **same** with [simple_demo](../simple_demo) except `strict` an
 
 ## Demo Model
 
-![Demo Model](..\simple_demo\DemoModelPicForGithub.png "Demo Model")
+![Demo Model](../simple_demo/DemoModelPicForGithub.png "Demo Model")
 
 ## Config Content
 

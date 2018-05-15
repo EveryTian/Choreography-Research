@@ -5,6 +5,7 @@ import sys
 from importlib import import_module
 from threading import Thread
 from flask import Flask, request
+from type_checker import function_type, check_type
 from message import Message
 from entity import Entity
 
@@ -51,7 +52,6 @@ def handle_message(message: Message):
 
 
 def check_setting():
-    from type_checker import function_type, check_type
     right_types = [
         ('listen_port', setting.listen_port, int),
         ('entity_type', setting.entity_type, str),

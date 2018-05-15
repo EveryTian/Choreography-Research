@@ -30,6 +30,14 @@ Python 3.6.5 :: Anaconda custom (64-bit)
   ```shell
   $ python main.py # Or you can change the name of `main.py`.
   ```
+  
+- For External, you can use `external_main.py`:
+
+  ```shell
+  $ python external_main.py # Or you can change the name of `external_main.py`.
+  ```
+
+  ***Attention:*** *When use `external_main.py`, the name of `main.py` can not be changed.*
 
 - Use `some-folder/another-folder/some-file.py` as the config file:
 
@@ -110,6 +118,15 @@ entity_default_data: dict
 messages_to_receive: dict
 ```
 
+And here is an optional part for `External`:
+
+**Only** when use `external_main.py`, you need and shall config the following 2 items:
+
+```python
+begin_message: str
+begin_message_to_entities_ids_chooser: function
+```
+
 - Type
 
   ```haskell
@@ -118,6 +135,8 @@ messages_to_receive: dict
   machine_name :: String
   entity_default_data :: JsonDict
   messages_to_receive :: Dict String (String -> String -> (), ([String], JsonDict -> Bool, [(String, Int -> JsonDict -> [Int], JsonDict -> JsonDict)]))
+  begin_message :: String
+  begin_message_to_entities_ids_chooser :: Int -> JsonDict -> [Int]
   ```
   ```python
   # For type_checker.py:
@@ -126,6 +145,8 @@ messages_to_receive: dict
   machine_name_type = str
   entity_default_data_type = dict
   messages_to_receive_type = {str: (function_type, ([str], function_type, [(str, function_type, function_type)]))}
+  begin_message_type = str
+  begin_message_to_entities_ids_chooser_type = function_type
   ```
 
 - Content
@@ -145,6 +166,8 @@ messages_to_receive: dict
          )
       )
   }
+  begin_message_type = 'begin_message_type'
+  begin_message_to_entities_ids_chooser_type = (entity_id, entity_data) => ids_list
   ```
 
   - **Attention 1: `entity_type` should be equal to `machine_name` .**

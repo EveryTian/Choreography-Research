@@ -24,3 +24,10 @@ messages_to_receive: dict = {
         )
     )
 }
+
+# For External
+begin_message: str = 'SIG'
+
+
+def begin_message_to_entities_ids_chooser(entity_id, _):
+    return [entity_id]
