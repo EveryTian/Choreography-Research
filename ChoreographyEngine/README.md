@@ -26,6 +26,8 @@ Python 3.6.5 :: Anaconda custom (64-bit)
 
 ### Run the Engine
 
+**`root` or `Administrator` permission may be needed.**
+
 - Default: (Use `setting.py` as the config file.)
 
   ```shell
@@ -172,7 +174,7 @@ begin_message_to_entities_ids_chooser: function
   ```
 
   - **Attention 1: `entity_type` should be equal to `machine_name` .**
-   
+  
   - **Attention 2: There is a strict mode for `snapshot_to_meet`. In the strict mode, the snapshot meets only if `snapshot_to_meet` is the same as the snapshot in an entity. To enable the strict mode, just make `snapshot_to_meet[0]` the empty string `''`.**
 
     For example:

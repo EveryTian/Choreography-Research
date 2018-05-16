@@ -33,7 +33,7 @@ def listen():
         Thread(target=message_handler).start()
         return setting.machine_name + '_GOT_' + message_info
 
-    app.run(port=setting.listen_port)
+    app.run(host='0.0.0.0', port=setting.listen_port)
 
 
 def handle_message(message: Message):
