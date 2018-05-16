@@ -50,7 +50,9 @@ if __name__ == '__main__' and main.check_setting() and init_check():
     Thread(target=main.listen).start()
     print('Please input the data of the message after `>> `:')
     while True:
-        data_str = input('>> ')
+        data_str = input('>> ').strip()
+        if data_str == '':
+        	continue
         if data_str == 'exit':
             print('Bye!')
             break

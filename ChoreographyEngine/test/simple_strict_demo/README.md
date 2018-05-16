@@ -1,5 +1,7 @@
 # Strict Demo Config
 
+![TEST - PASS](https://img.shields.io/badge/TEST-PASS-green.svg)
+
 A demo with no logical predicates in the strict mode.
 
 Everything is the **same** with [simple_demo](../simple_demo) except `strict` and  `non-strict` .
