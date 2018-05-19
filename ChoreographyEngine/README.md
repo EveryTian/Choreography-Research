@@ -210,4 +210,4 @@ begin_message_to_entities_ids_chooser: function
       pass # This function presents the relationships.
   ```
 
-**Click Here:** [**Message Format and Some Questions**](message_format.md)
+**Click Here:** [**Message Format**](MessageFormat.md)

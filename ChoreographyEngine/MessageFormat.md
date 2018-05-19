@@ -22,7 +22,7 @@ Message in JSON:
 }
 ```
 
-## Some Questions
+## Some Questions (All Solved)
 
 ```json
 {
@@ -45,9 +45,20 @@ Message in JSON:
 }
 ```
 
-Question:
+Questions:
 
 1. Where to place `relationships`, at *1* or *2* ?
+
+   No `relationships` in message. So neither *1* nor *2*.
+
 2. How to present `relationships` ?
+
+   Relationships is presented in config file. There is functions in `messages_to_receive` .
+
 3. Contains `to_entity_id` or not, at *3* or *4* ?
+
+   Contains it and at *4*.
+
 4. Who acts as `External` and how to deal with `External` ?
+
+   An special entity acts as `External` . Use `external_main.py` to deal with `External` . 
