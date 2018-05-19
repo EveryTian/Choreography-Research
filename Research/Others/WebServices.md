@@ -1,8 +1,6 @@
 # Web Services
 
-**更正：与WS-CDL和WSDL是不同的东西**
-
-*某种`XML` + `HTTP`的实现。*
+*一种`XML` + `HTTP`的实现。*
 
 - Web services are application components
 - Web services communicate using open protocols
@@ -17,17 +15,17 @@
 - UDDI（通用描述、发现及整合）
 - WSDL（Web services 描述语言）
 
-*除此之外，Web Services还涉及到RDF（Resource Description Framework），RSS（Really Simple Syndication）两个XML描述，不过大概和UDDI类似，相关度不高。*
+*除此之外，Web Services还涉及到RDF（Resource Description Framework），RSS（Really Simple Syndication）两个XML描述，不过和UDDI类似，与Web Services核心相关度不高。*
 
 ## 实例
 
-*一个基于ASP.NET的实例（好似是ASP.NET可以生成相关WSDL和SOAP），方便理解Web Service，简单叙述如下：*
+一个基于ASP.NET的实例（ASP.NET可以生成相关WSDL和SOAP），方便理解Web Services，简单叙述如下：
 
 假设.NET服务器上存在文件abs.asmx定义了求绝对值的WebMethod（也就是一个函数）Abs，形参为n。
 
 那么可以存在如下关系：
 
-向http://foo.com/abs.asmx/Abs POST：
+向`http://foo.com/abs.asmx/Abs`POST：
 
 ```xml
 n=-15
@@ -41,27 +39,27 @@ n=-15
 
 *Web services大概就是这么一个东西。*
 
-#WSDL
+# WSDL
 
 ## WS-CDL
 
-**更正：与WSDL是不同的东西**
+**注：WS-CDL与WSDL是不同的东西**
 
-WSDL描述Web Services
+- WSDL描述Web Services
 
-WSCDL描述Web Services中的Choreography
+- WS-CDL描述Web Services中的Choreography
 
 *WS-CDL的相关见两个W3C官方提供的文档中*
 
 > WS-CDL is a language for specifying peer-to-peer protocols where each party wishes to remain autonomous and in which no party is master over any other.
 
-*在WS-CDL Primer的6.1中BPEL和WSDL作为* Implementation Considerations & End Point Projections出现
+在WS-CDL Primer的6.1中BPEL和WSDL作为Implementation Considerations & End Point Projections出现。
 
-##Back to WSDL
+## Back to WSDL
 
 *WSDL仅是一个XML文档，可**描述**某个Web Service。*
 
-*也就是说WSDL仅仅是一个对于Web Service进行描述的XML文档，或者说WSDL即是一个对于Web Service进行描述的模型*
+也就是说WSDL仅仅是一个对于Web Service进行描述的XML文档，或者说WSDL即是一个对于Web Service进行描述的模型。
 
 ```xml
 <wsdl:definitions name="nmtoken"? targetNamespace="uri">
@@ -141,16 +139,13 @@ WSCDL描述Web Services中的Choreography
 | `<types>`    | 使用 XML Schema 语法来定义数据类型                  |
 | `<binding>`  | 为每个端口定义消息格式和协议细节                         |
 
-###portType
+### portType
 
 `portType`中定义了一系列的操作，可以将操作分为四种具体的操作类型：
-
-*应该是在主观上人们将其可以分为以下4种类型：*
 
 - One-way
 
   仅接收消息
-
 
 - Request-response
 
@@ -164,19 +159,19 @@ WSCDL描述Web Services中的Choreography
 
   仅发送消息
 
-###binding
+### binding
 
-`binding` 元素有两个属性 - name 属性和 type 属性。
+- `binding`元素有两个属性: `name`属性和`type`属性
 
-name 属性定义 binding 的名称，而 type 属性指向用于 binding 的端口。
+  - `name`属性定义`binding`的名称
+  - `type`属性指向用于`binding`的端口
 
-`soap:binding` 元素有两个属性 - style 属性和 transport 属性。
+- `soap:binding`元素有两个属性: `style`属性和`transport`属性
 
-style 属性可取值 "rpc" 或 "document"。
+  - `style`属性可取值`"rpc"`或`"document"`
+  - `transport`属性定义了要使用的SOAP协议
 
-transport 属性定义了要使用的 SOAP 协议。
-
-`operation` 元素定义了每个端口提供的操作符。
+- `operation`元素定义了每个端口提供的操作符
 
 对于每个操作，相应的 SOAP 行为都需要被定义。
 
@@ -218,9 +213,7 @@ transport="http://schemas.xmlsoap.org/soap/http" />
 
 # SOAP
 
-Web Service的通信协议
-
-SOAP构建于HTTP之上
+是Web Services的通信协议，构建于HTTP之上
 
 *一个SOAP就是一个XML文档*
 
@@ -296,5 +289,3 @@ soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
 ```
 
 *SOAP是通过HTTP GET or POST SOAP格式的XML文档，对于HTTP而言，要满足`Content-Type: application/soap+xml`*
-
-*好像在哪里看到过Web services直接裸POST就可以了的，找不到在哪里了，不知道ASP.NET那个例子算不算*
