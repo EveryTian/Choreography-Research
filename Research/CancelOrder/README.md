@@ -34,7 +34,7 @@ Here is the picture for the GFM:
 
 ## Something Else
 
-- [Xmind File for Cancel Order](ArtifactDescription.xmind)
+- [Xmind File for Cancel Order](ArtifactDescription.xmind) (By [Yi Chenchang](https://github.com/nicelove1998))
 - [Cancel Order Implementation With Model](CancelOrderImplementation.java)
 - [StarUML File for Cancel Order Interaction](CancelOrderInteraction.mdj)
 
