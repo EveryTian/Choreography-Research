@@ -161,17 +161,11 @@ n=-15
 
 ### binding
 
-- `binding`元素有两个属性: `name`属性和`type`属性
-
-  - `name`属性定义`binding`的名称
-  - `type`属性指向用于`binding`的端口
-
-- `soap:binding`元素有两个属性: `style`属性和`transport`属性
-
-  - `style`属性可取值`"rpc"`或`"document"`
-  - `transport`属性定义了要使用的SOAP协议
-
-- `operation`元素定义了每个端口提供的操作符
+- `binding`元素有两个属性: `name`属性和`type`属性，其中`name`属性定义`binding`的名称，`type`属性指向用于`binding`的端口。
+  
+- `soap:binding`元素有两个属性: `style`属性和`transport`属性，其中`style`属性可取值`"rpc"`或`"document"`，`transport`属性定义了要使用的SOAP协议。
+  
+- `operation`元素定义了每个端口提供的操作符。
 
 对于每个操作，相应的 SOAP 行为都需要被定义。
 
