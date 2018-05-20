@@ -47,15 +47,25 @@ def send_message(send_data):
 
 
 if __name__ == '__main__' and main.check_setting() and init_check():
+    import platform
+
+    os_name = platform.system()
+    if os_name == 'Darwin' or os_name == 'Linux' or \
+            os_name[:6] == 'CYGWIN' or os_name[:5] == 'MINGW':
+        from utils.watcher import Watcher
+
+        Watcher()
     Thread(target=main.listen).start()
     print('Please input the data of the message after `>> `:')
     while True:
-        data_str = input('>> ').strip()
-        if data_str == '':
-        	continue
-        if data_str == 'exit':
+        data_str: str
+        try:
+            data_str = input('>> ').strip()
+        except KeyboardInterrupt:
             print('Bye!')
-            break
+            sys.exit()
+        if data_str == '':
+            continue
         data = {}
         try:
             data = json.loads(data_str)
