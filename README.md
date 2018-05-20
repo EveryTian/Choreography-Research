@@ -3,11 +3,11 @@ The repository for SRTP(Choreography Design).
 
 ## What We Have Done
 
-Here is parts of research results. Every hyperlink in every RAEDME is meaningful.
+Here is parts of research results. Every hyperlink in every readme is meaningful.
 
 ### On the Model Level
 
-- [The Basic Design for the Entity Model](Model/EntityModel.java)
+- [The Basic Design for the Entity Model](Research/Model/EntityModel.java)
 - [**The Choreography Engine**](ChoreographyEngine)
 
 ### With the Cancel Order Artifact
