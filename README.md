@@ -19,4 +19,4 @@ Here is parts of research results. Every hyperlink in every RAEDME is meaningful
 ### Something Else
 
 - [A Brief Report on Web Services](Research/Others/WebServices.md)
-- [A Type Checker for Python 3](ChoreographyEngine/type_checker.py)
+- [A Type Checker for Python 3](ChoreographyEngine/utils/type_checker.py)
