@@ -18,13 +18,16 @@ artifacts: dict = {}
 
 
 def listen():
+    import logging
+    log = logging.getLogger('werkzeug')
+    log.setLevel(logging.ERROR)
     app = Flask(__name__)
 
     @app.route('/', methods=['POST'])
     def listen_handler():
         message = Message(request.get_json())
         message_info = message.get_message_type() + '[' + str(message.get_artifact_id()) + ']' + \
-            '(' + str(message.get_from_entity_id()) + '->' + str(message.get_to_entities_ids()) + ')'
+                       '(' + str(message.get_from_entity_id()) + '->' + str(message.get_to_entities_ids()) + ')'
         print('[L]', message_info)
 
         def message_handler():
@@ -33,6 +36,8 @@ def listen():
         Thread(target=message_handler).start()
         return setting.machine_name + '_GOT_' + message_info
 
+    print(' * `' + setting.entity_type + '` Running on http://0.0.0.0:' + \
+          str(setting.listen_port) + '/ (Press CTRL+C to quit)')
     app.run(host='0.0.0.0', port=setting.listen_port)
 
 
@@ -48,7 +53,6 @@ def handle_message(message: Message):
         if to_entity_id not in artifact:
             artifact[to_entity_id] = Entity(artifact_id, setting.entity_type, to_entity_id)
         artifact[to_entity_id].handle_message(message)
-    # TODO: Need something more?
 
 
 def check_setting():
