@@ -11,10 +11,12 @@ Python 3.6.5 :: Anaconda custom (64-bit)
 
 ```python
 >>> flask.__version__
-'0.12.2'
+'1.0.2'
 >>> requests.__version__
 '2.18.4'
 ```
+
+(Have better experience on Linux, MacOS, Cygwin and MSYS.)
 
 ## Test Demos
 
