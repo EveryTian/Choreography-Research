@@ -7,10 +7,14 @@ from threading import Thread
 import json
 from requests import post
 
+setting_module_name: str = 'setting'
 if len(sys.argv) == 2:
-    setting = import_module(sys.argv[1])
-else:
-    setting = import_module('setting')
+    setting_module_name = sys.argv[1]
+try:
+    setting = import_module(setting_module_name)
+except ModuleNotFoundError:
+    sys.stderr.write('Error: Config file `' + setting_module_name.replace('.', '/') + '.py` not found.\n')
+    sys.exit()
 
 
 class Message:
