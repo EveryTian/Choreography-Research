@@ -67,6 +67,7 @@ All the machines in one artifact share the same public part, namely, the followi
 ```python
 messages_paths: dict
 machines_addresses: dict
+whiteboard_address: str  # Optional
 ```
 
 - Type
@@ -74,11 +75,13 @@ machines_addresses: dict
   ```haskell
   messages_paths :: Dict String (String, String)
   machines_address :: Dict String String
+  whiteboard_address :: String -- Optional
   ```
   ```python
   # For type_checker.py:
   messages_paths_type = {str: (str, str)}
   machines_address_type = {str: str}
+  whiteboard_address_type = str  # Optional
   ```
 
 - Content
@@ -90,6 +93,7 @@ machines_addresses: dict
   machines_addresses: dict = {
       machine_name : ip_address
   }
+  whiteboard_address: str = 'http://whiteboard.addr'  # Optional
   ```
 
 - Example
@@ -107,6 +111,7 @@ machines_addresses: dict
       'Fulfillment': 'http://192.168.1.3:8000',
       'Payment': 'http://192.168.1.4:80'
   }
+  whiteboard_address: str = 'http://192.168.1.5:80'  # Optional
   ```
 
 #### Private Part

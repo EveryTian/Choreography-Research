@@ -5,6 +5,7 @@ messages_paths: dict = {
 machines_addresses: dict = {
     # machine_name : ip_address
 }
+whiteboard_address: str = 'http://whiteboard.addr'  # Optional
 
 # Private Part
 listen_port: int = 5000
