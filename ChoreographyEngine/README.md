@@ -16,6 +16,14 @@ Python 3.6.5 :: Anaconda custom (64-bit)
 '2.18.4'
 ```
 
+You can simply install dependencies with `pip` or `conda` :
+
+```shell
+$ # Use one of the following command:
+$ pip install -r requirements.txt
+$ conda install --yes --file requirements.txt
+```
+
 (Have better experience on Linux, MacOS, Cygwin and MSYS.)
 
 ## Test Demos
