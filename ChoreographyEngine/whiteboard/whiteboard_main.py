@@ -3,9 +3,10 @@
 
 import sys
 from flask import Flask, request
-from __init__ import WhiteboardMessage
+from . import WhiteboardMessage
 
 listen_port: int = 80
+
 
 def listen():
     import logging
@@ -18,9 +19,9 @@ def listen():
         print(str(WhiteboardMessage(request.get_json())))
         return 'Whiteboard handled.'
 
-    print(' * `' + setting.entity_type + '` Running on http://0.0.0.0:' +
-          str(listen_port) + '/ (Press CTRL+C to quit)')
+    print(' * Whiteboard running on http://0.0.0.0:' + str(listen_port) + '/ (Press CTRL+C to quit)')
     app.run(host='0.0.0.0', port=listen_port)
+
 
 if __name__ == '__main__':
     global listen_port

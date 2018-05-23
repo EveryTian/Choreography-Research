@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import sys
+import os
 from importlib import import_module
 from message import Message, MessageHandler
 
@@ -11,7 +12,7 @@ if len(sys.argv) == 2:
 try:
     setting = import_module(setting_module_name)
 except ModuleNotFoundError:
-    sys.stderr.write('Error: Config file `' + setting_module_name.replace('.', '/') + '.py` not found.\n')
+    sys.stderr.write("Error: Config file `%s.py` not found.\n" % os.path.join(*setting_module_name.split('.')))
     sys.exit()
 
 

@@ -2,10 +2,13 @@
 # coding: utf-8
 
 import sys
+import os
 from importlib import import_module
 from threading import Thread
+from time import time
 import json
 from requests import post
+import whiteboard
 
 setting_module_name: str = 'setting'
 if len(sys.argv) == 2:
@@ -13,8 +16,13 @@ if len(sys.argv) == 2:
 try:
     setting = import_module(setting_module_name)
 except ModuleNotFoundError:
-    sys.stderr.write('Error: Config file `' + setting_module_name.replace('.', '/') + '.py` not found.\n')
+    sys.stderr.write("Error: Config file `%s.py` not found.\n" % os.path.join(*setting_module_name.split('.')))
     sys.exit()
+whiteboard_address: str = ''
+try:
+    whiteboard_address = setting.whiteboard_address
+except AttributeError:
+    pass
 
 
 class Message:
@@ -76,6 +84,12 @@ class MessageHandler:
             },
             'data': data
         }
+        self.__artifact_id = artifact_id
+        self.__message_type = message_type
+        self.__from_entity_type = from_entity_type
+        self.__from_entity_id = from_entity_id
+        self.__to_entities_type = to_entities_type
+        self.__to_entities_ids = to_entities_ids
         self.__to_address = setting.machines_addresses[to_entities_type]
 
     def __str__(self):
@@ -98,4 +112,9 @@ class MessageHandler:
             response = post(address, json=self.__data, timeout=10)
             print('[R]', response, response.text)
 
+        if whiteboard_address != '':
+            whiteboard.write_whiteboard(whiteboard_address, whiteboard.WhiteboardMessage.create_from_fields(
+                time(), whiteboard.WriterType.SENDER, self.__artifact_id, self.__message_type,
+                self.__from_entity_type, self.__from_entity_id, self.__to_entities_type, self.__to_entities_ids
+            ))
         Thread(target=post_thread_target).start()
