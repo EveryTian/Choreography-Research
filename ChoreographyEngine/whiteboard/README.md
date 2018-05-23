@@ -2,6 +2,8 @@
 
 The whiteboard of the Choreography Engine.
 
+[![TEST - PASS](https://img.shields.io/badge/DEMO%20TEST-PASS-green.svg "Click to See the Sample")](../test/simple_strict_demo)
+
 ## How to Use
 
 ```shell
@@ -36,3 +38,20 @@ $ python whiteboard_main.py <port number> # Or another name
     }
 }
 ```
+
+## Change Whiteboard Action
+
+You can simply change the action of the whiteboard.
+
+The action function is defined as `whiteboard_handler(whiteboard_message)` .
+
+The current whiteboard handler:
+
+```python
+def whiteboard_handler(whiteboard_message):
+    print(str(whiteboard_message))
+```
+
+Rewrite the handler, and you can make a different whiteboard.
+
+You may need `whiteboard_messages` , which stores all the whiteboard messages received. In artifact `#n` , you can find the messages in `whiteboard_messages[n]` .

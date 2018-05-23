@@ -6,6 +6,11 @@ from flask import Flask, request
 from __init__ import WhiteboardMessage
 
 listen_port: int = 80
+whiteboard_messages: dict = {}
+
+
+def whiteboard_handler(whiteboard_message):
+    print(str(whiteboard_message))
 
 
 def listen():
@@ -16,7 +21,12 @@ def listen():
 
     @app.route('/', methods=['POST'])
     def listen_handler():
-        print(str(WhiteboardMessage(request.get_json())))
+        whiteboard_message = WhiteboardMessage(request.get_json())
+        artifact_id = whiteboard_message.artifact_id
+        if artifact_id not in whiteboard_messages:
+            whiteboard_messages[artifact_id] = []
+        whiteboard_messages[artifact_id].append(whiteboard_message)
+        whiteboard_handler(whiteboard_message)
         return 'Whiteboard handled.'
 
     print(' * Whiteboard running on http://0.0.0.0:' + str(listen_port) + '/ (Press CTRL+C to quit)')
