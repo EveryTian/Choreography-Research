@@ -29,7 +29,7 @@ $ conda install --yes --file requirements.txt
 ## Test Demos
 
 - [Simple Demo](test/simple_demo) (Pass)
-- [Simple Strict Demo](test/simple_strict_demo) (Pass)
+- [Simple Strict Demo (Use Whiteboard)](test/simple_strict_demo) (Pass)
 - [Cancel Order Demo](test/cancel_order_demo) (Pass)
 
 ## The Whiteboard

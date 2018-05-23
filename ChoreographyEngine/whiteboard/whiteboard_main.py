@@ -3,7 +3,7 @@
 
 import sys
 from flask import Flask, request
-from . import WhiteboardMessage
+from __init__ import WhiteboardMessage
 
 listen_port: int = 80
 
@@ -24,7 +24,6 @@ def listen():
 
 
 if __name__ == '__main__':
-    global listen_port
     if len(sys.argv) == 2:
         try:
             listen_port = int(sys.argv[1])

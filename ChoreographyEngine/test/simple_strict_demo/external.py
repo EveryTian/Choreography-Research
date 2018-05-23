@@ -10,6 +10,7 @@ machines_addresses: dict = {
     'Sender': 'http://127.0.0.1:8002',
     'Receiver': 'http://127.0.0.1:8003'
 }
+whiteboard_address: str = 'http://127.0.0.1'
 
 # Private Part
 listen_port: int = 8001

@@ -20,12 +20,12 @@ def init_check():
     global to_entities_ids_chooser
     try:
         begin_message_type = main.setting.begin_message
-    except NameError:
+    except AttributeError:
         sys.stderr.write('Error: `begin_message` is not defined.\n')
         return False
     try:
         to_entities_ids_chooser = main.setting.begin_message_to_entities_ids_chooser
-    except NameError:
+    except AttributeError:
         sys.stderr.write('Error: `begin_message_to_entities_ids_chooser` is not defined.\n')
         return False
     if begin_message_type not in main.setting.messages_paths:
@@ -40,7 +40,7 @@ def init_check():
 
 def send_message(send_data):
     global new_artifact_id
-    to_entities_ids = to_entities_ids_chooser(new_artifact_id, send_data)
+    to_entities_ids = to_entities_ids_chooser(1, send_data)
     MessageHandler(new_artifact_id, begin_message_type,
                    external_type, 1, begin_message_to_entities_type, to_entities_ids, send_data).send()
     new_artifact_id += 1
@@ -50,8 +50,7 @@ if __name__ == '__main__' and main.check_setting() and init_check():
     import platform
 
     os_name = platform.system()
-    if os_name == 'Darwin' or os_name == 'Linux' or \
-            os_name[:6] == 'CYGWIN' or os_name[:5] == 'MINGW':
+    if os_name == 'Darwin' or os_name == 'Linux' or os_name[:6] == 'CYGWIN' or os_name[:5] == 'MINGW':
         from utils.watcher import Watcher
 
         Watcher()

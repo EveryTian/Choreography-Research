@@ -65,16 +65,18 @@ class WhiteboardMessage:
         self.__generate_data()
 
     def __str__(self):
-        if self.__writer_type == WriterType.SENDER:
+        if self.__writer_type == WriterType.SENDER.value:
             return "%s #%d %s[%d] SENDS %s TO %s%s" % (
                 self.time_string, self.__artifact_id, self.__from_entity_type, self.__from_entity_id,
                 self.__message_type, self.__to_entities_type, str(self.__to_entities_ids)
             )
-        elif self.__writer_type == WriterType.RECEIVER:
+        elif self.__writer_type == WriterType.RECEIVER.value:
             return "%s #%d %s%s RECEIVES %s FROM %s[%d]" % (
                 self.time_string, self.__artifact_id, self.__to_entities_type, str(self.__to_entities_ids),
                 self.__message_type, self.__from_entity_type, self.__from_entity_id
             )
+        else:
+            return ''
 
     __repr__ = __str__
 
@@ -86,7 +88,7 @@ class WhiteboardMessage:
     def time_string(self) -> str:
         datetime_obj = datetime.fromtimestamp(self.__timestamp)
         return "%d:%d:%d.%d" % (
-            datetime_obj.hour, datetime_obj.min, datetime_obj.second, datetime_obj.microsecond
+            datetime_obj.hour, datetime_obj.minute, datetime_obj.second, datetime_obj.microsecond
         )
 
     @property
@@ -101,7 +103,7 @@ class WhiteboardMessage:
         datetime_obj = datetime.fromtimestamp(self.__timestamp)
         return "%d/%d/%d-%d:%d:%d.%d" % (
             datetime_obj.year, datetime_obj.month, datetime_obj.day,
-            datetime_obj.hour, datetime_obj.min, datetime_obj.second, datetime_obj.microsecond
+            datetime_obj.hour, datetime_obj.minute, datetime_obj.second, datetime_obj.microsecond
         )
 
     @property
@@ -140,6 +142,7 @@ class WhiteboardMessage:
 
     def __generate_data(self):
         self.__json_data = {
+            'timestamp': self.__timestamp,
             'writer_type': self.__writer_type,
             'artifact_id': self.__artifact_id,
             'message_type': self.__message_type,

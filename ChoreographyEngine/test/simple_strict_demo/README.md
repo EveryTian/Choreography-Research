@@ -4,7 +4,7 @@
 
 A demo with no logical predicates in the strict mode.
 
-Everything is the **same** with [simple_demo](../simple_demo) except `strict` and  `non-strict` .
+Everything is the **same** with [simple_demo](../simple_demo) except `strict` and the whiteboard.
 
 ## Difference
 

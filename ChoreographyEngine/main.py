@@ -72,16 +72,20 @@ def handle_message(message: Message):
 
 
 def check_setting():
-    right_types = [
-        ('listen_port', setting.listen_port, int),
-        ('entity_type', setting.entity_type, str),
-        ('machine_name', setting.machine_name, str),
-        ('entity_default_data', setting.entity_default_data, dict),
-        ('messages_to_receive', setting.messages_to_receive,
-         {str: (function_type, ([str], function_type, [(str, function_type, function_type)]))}),
-        ('messages_paths', setting.messages_paths, {str: (str, str)}),
-        ('machines_addresses', setting.machines_addresses, {str: str})
-    ]
+    try:
+        right_types = [
+            ('listen_port', setting.listen_port, int),
+            ('entity_type', setting.entity_type, str),
+            ('machine_name', setting.machine_name, str),
+            ('entity_default_data', setting.entity_default_data, dict),
+            ('messages_to_receive', setting.messages_to_receive,
+             {str: (function_type, ([str], function_type, [(str, function_type, function_type)]))}),
+            ('messages_paths', setting.messages_paths, {str: (str, str)}),
+            ('machines_addresses', setting.machines_addresses, {str: str})
+        ]
+    except AttributeError:
+        sys.stderr.write('Config Error: Fields is not fully configured.\n')
+        return False
     for (setting_item_name, setting_item, right_type) in right_types:
         if not check_type(setting_item, right_type):
             sys.stderr.write("Config Error: `%s` does not match type `%s`.\n" %
