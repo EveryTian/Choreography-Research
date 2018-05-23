@@ -109,7 +109,7 @@ class MessageHandler:
 
         def post_thread_target():
             print('[S]', 'Send Message:', self.__data)
-            response = post(address, json=self.__data, timeout=10)
+            response = post(address, json=self.__data)
             print('[R]', response, response.text)
 
         if whiteboard_address != '':
