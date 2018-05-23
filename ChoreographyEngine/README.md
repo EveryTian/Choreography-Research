@@ -32,6 +32,14 @@ $ conda install --yes --file requirements.txt
 - [Simple Strict Demo](test/simple_strict_demo) (Pass)
 - [Cancel Order Demo](test/cancel_order_demo) (Pass)
 
+## The Whiteboard
+
+The whiteboard is an optional part for an artifact. It keeps the records and the snapshot for the whole artifact.
+
+Click [here](whiteboard) to see more about the usage.
+
+And you need to configure the engine is you want to use the whiteboard (See [here](#configure-the-engine)).
+
 ## How to Use
 
 ### Run the Engine
@@ -77,7 +85,7 @@ All the machines in one artifact share the same public part, namely, the followi
 ```python
 messages_paths: dict
 machines_addresses: dict
-whiteboard_address: str  # Optional
+whiteboard_address: str  # Optional (If you want to use the whiteboard, then you shall configure this field.)
 ```
 
 - Type
