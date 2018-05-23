@@ -52,6 +52,6 @@ def whiteboard_handler(whiteboard_message):
     print(str(whiteboard_message))
 ```
 
-Rewrite the handler, and you can make a different whiteboard.
+*Rewrite the handler to create a different whiteboard.*
 
-You may need `whiteboard_messages` , which stores all the whiteboard messages received. In artifact `#n` , you can find the messages in `whiteboard_messages[n]` .
+You may need `whiteboard_messages` , which stores all the whiteboard messages received. For artifact `#n` , you can find its messages in `whiteboard_messages[n]` .
