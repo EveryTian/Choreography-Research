@@ -12,7 +12,9 @@
 
   ![After Click `Once`](afterClickOnce.png)
 
-  Here is a `.gif` version for the whole artifact: [afterClickOnce.gif](afterClickOnce.gif)
+  Here is a `.gif` version for the whole artifact: 
+
+  ![afterClickOnce.gif](afterClickOnce.gif)
 
 - Lots of Messages
 
