@@ -24,9 +24,9 @@ function createOrderCancel(artifact) {
 }
 
 function createReshippingBack(artifact) {
-    writeWhiteBoard('#' + artifact.id + ' Order SEND OrderCancel (Order -> External)\n');
+    writeWhiteBoard('#' + artifact.id + ' Order SEND ReshippingBack (Order -> External)\n');
     let reshippingBack = new Message(order, external, artifact, () => {
-        writeWhiteBoard('#' + artifact.id + ' External GET OrderCancel (Order -> External)\n');
+        writeWhiteBoard('#' + artifact.id + ' External GET ReshippingBack (Order -> External)\n');
         createShippingBack(artifact);
     });
     artifact.msgs.push(reshippingBack);
@@ -63,18 +63,18 @@ function createOrderUndone(artifact) {
 }
 
 function createPaymentCancel(artifact) {
-    writeWhiteBoard('#' + artifact.id + ' External SEND PaymentCancel (External -> Purchase)\n');
-    let paymentCancel = new Message(external, purchase, artifact, () => {
-        writeWhiteBoard('#' + artifact.id + ' Purchase GET PaymentCancel (External -> Purchase)\n');
+    writeWhiteBoard('#' + artifact.id + ' External SEND PaymentCancel (External -> Payment)\n');
+    let paymentCancel = new Message(external, payment, artifact, () => {
+        writeWhiteBoard('#' + artifact.id + ' Payment GET PaymentCancel (External -> Payment)\n');
         createOrderPaymentUndone(artifact);
     });
     artifact.msgs.push(paymentCancel);
 }
 
 function createOrderPaymentUndone(artifact) {
-    writeWhiteBoard('#' + artifact.id + ' Purchase SEND OrderPaymentUndone (Purchase -> Order)\n');
-    let orderPaymentUndone = new Message(purchase, order, artifact, () => {
-        writeWhiteBoard('#' + artifact.id + ' Order GET OrderPaymentUndone (Purchase -> Order)\n');
+    writeWhiteBoard('#' + artifact.id + ' Payment SEND OrderPaymentUndone (Payment -> Order)\n');
+    let orderPaymentUndone = new Message(payment, order, artifact, () => {
+        writeWhiteBoard('#' + artifact.id + ' Order GET OrderPaymentUndone (Payment -> Order)\n');
         createInVoice(artifact);
     });
     artifact.msgs.push(orderPaymentUndone);
