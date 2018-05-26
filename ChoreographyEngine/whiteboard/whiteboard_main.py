@@ -39,5 +39,5 @@ if __name__ == '__main__':
             listen_port = int(sys.argv[1])
         except ValueError:
             sys.stderr.write("Error: `%s` is not a number\n" % str(listen_port))
-        sys.exit()
+            sys.exit()
     listen()
