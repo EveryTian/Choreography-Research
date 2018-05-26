@@ -238,6 +238,8 @@ class Artifact {
             case 'create-order':
                 this.shapeDraw = shapesDrawer[2];
                 break;
+            case 'deliver':
+                this.shapeDraw = shapesDrawer[0];
         }
         this.msgs = [];
     }
