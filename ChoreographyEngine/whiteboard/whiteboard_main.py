@@ -3,7 +3,7 @@
 
 import sys
 from flask import Flask, request
-from __init__ import WhiteboardMessage
+from whiteboard import WhiteboardMessage
 
 listen_port: int = 80
 whiteboard_messages: dict = {}
