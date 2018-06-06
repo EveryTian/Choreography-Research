@@ -18,5 +18,6 @@ Here is parts of research results. Every hyperlink in every readme is meaningful
 
 ### Something Else
 
+- [*A Type Checker Module for Python 3*](ChoreographyEngine/utils/typechecker)
 - [A Brief Report on Web Services](Research/Others/WebServices.md)
-- [A Type Checker for Python 3](ChoreographyEngine/utils/type_checker.py)
+

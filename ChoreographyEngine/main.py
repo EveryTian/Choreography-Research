@@ -7,7 +7,7 @@ from importlib import import_module
 from threading import Thread
 from time import time
 from flask import Flask, request
-from utils.type_checker import function_type, check_type
+from utils.typechecker import function_type, check_type
 from message import Message
 from entity import Entity
 import whiteboard
