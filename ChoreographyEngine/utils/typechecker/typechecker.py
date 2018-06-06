@@ -1,4 +1,3 @@
-#! python3
 # coding: utf-8
 
 """
@@ -22,7 +21,7 @@ A Type Checker for Python Data Types:
 function_type = type(lambda _: _)
 
 
-def check_type(element, some_type) -> bool:
+def check_type(element, some_type):
     compound_types = {tuple, set, list, dict}
     element_type = type(element)
     if element_type is type(some_type) and element_type in compound_types:

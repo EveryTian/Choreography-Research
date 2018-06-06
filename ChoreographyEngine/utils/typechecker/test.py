@@ -1,6 +1,6 @@
-#! python3
 # coding: utf-8
 
+import sys
 from typechecker import function_type, check_type
 
 # Simple tests:
@@ -71,19 +71,17 @@ if __name__ == '__main__':
         ]
     }
     for description in test_cases:
-        print(description)
+        sys.stdout.write(description + '\n')
         for test_case in test_cases[description]:
             arg0 = test_case[0]
             arg1 = test_case[1]
             expected_result = test_case[2]
-            print(' ', arg0, arg1, 'should_be', expected_result, end=' | ')
+            sys.stdout.write(" %s %s should_be %s | " % (arg0, arg1, expected_result))
             real_result = check_type(arg0, arg1)
             if real_result == expected_result:
-                print('PASSED')
+                sys.stdout.write('PASSED\n')
             else:
-                print('FAILED')
-                import sys
-
+                sys.stdout.write('FAILED\n')
                 sys.stderr.write("    EXPECTED: %s\n    BUT GOT: %s\n" %
                                  (str(expected_result), str(real_result)))
                 sys.exit(2)

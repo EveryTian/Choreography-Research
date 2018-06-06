@@ -1,6 +1,6 @@
 # `typechecker`
 
-![](https://img.shields.io/badge/Python-3.6-blue.svg) [![TEST - PASS](https://img.shields.io/badge/TEST-PASS-green.svg "Click to See Test Samples")](test.py)
+![](https://img.shields.io/badge/Python-2.7,%203.6-blue.svg) [![TEST - PASS](https://img.shields.io/badge/TEST-PASS-green.svg "Click to See Test Samples")](test.py)
 
 A type checker for Python data types.
 
