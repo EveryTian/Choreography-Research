@@ -53,7 +53,7 @@ Questions:
 
 2. How to present `relationships` ?
 
-   Relationships is presented in config file. There is functions in `messages_to_receive` .
+   Relationships is presented in config file (like [setting_template.py](setting_template.py)). There are functions presented relationships in `messages_to_receive` .
 
 3. Contains `to_entity_id` or not, at *3* or *4* ?
 
