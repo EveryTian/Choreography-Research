@@ -20,7 +20,7 @@ A type checker for Python data types.
 ## Some Restrictions on Usage
 
 1. Not really Python type but static data type;
-2. Only available for the 4 compound data;
+2. For compound data type, only support `list`, `tuple`, `dict` and `set`;
 3. Cannot check arguments' type of functions.
 
 ## How to Use 
